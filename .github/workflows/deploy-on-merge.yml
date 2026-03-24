@@ -45,7 +45,8 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }} # 使用内置的令牌
         publish_dir: ./dist # 项目构建产物的目录
         publish_branch: deploy # 指定要部署到的独立分支
-        full_commit_message: ${{ github.event.head_commit.message }} # 使用触发工作流的提交信息
+        force_orphan: true  # 每次部署创建孤立提交，清空历史
+        full_commit_message: "Deploy: ${{ github.event.head_commit.message }}" # 部署时的提交信息
 
     # 存档产物
     # - name: Archive production build
